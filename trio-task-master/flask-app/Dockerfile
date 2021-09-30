@@ -1,10 +1,12 @@
 #Use Python 3.6 as a base image
-
+FROM python:3.6
 # Copy contents into image
- 
+WORKDIR /flask-app
+COPY . .
+ENV DATABASE_URI=$DATABASE_URI
 # install pip dependencies from requirements file
- 
+RUN pip install -r requirements.txt
 # Expose correct port
-
+EXPOSE 5000
 # Create an entrypoint
-
+ENTRYPOINT ["python3", "app.py"]
