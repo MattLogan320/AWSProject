@@ -6,7 +6,7 @@ app = Flask(__name__)
 db = SQLAlchemy(app)
 
 # Replace [PASSWORD] with the root password for your mysql container
-app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://admin:oupwaDHFGVWAF-9Q2VSJADVBWUHFwavJBDafds;kv@projectdatabase.crqyzgomrrql.eu-west-1.rds.amazonaws.com:3306/ProjectDatabase"
+app.config['SQLALCHEMY_DATABASE_URI'] = getenv('DATABASE_URI')
 class Users(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	first_name = db.Column(db.String(30), nullable=False)
